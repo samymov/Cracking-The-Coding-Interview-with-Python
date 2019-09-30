@@ -1,0 +1,109 @@
+
+"""
+Chapter 01 - Problem 02 - Check Permutation - CTCI 6th Edition page 90
+Problem Statement:
+Given two strings, write a method to decide if one is a permutation of the
+other.
+Example:
+("alex", "lexa") -> True
+
+
+Solution:
+
+
+We assume that the input strings will contain only ASCII characters and that upper
+case characters are distinct from lower case ones i.e. "Alex" is not a permutation
+of "alex". We define a permutation as a rearrangement of characters i.e. two strings
+that are permutations of each other must contain exactly the same characters with the
+same frequency. If two strings have unequal length they cannot be permutations.
+We count character appearances using a 128 wide bit vector. We
+traverse each string one character at a time. Each time we observe a character, we flip
+the bit corresponding at the index corresponding to its ASCII value. If we traverse two
+strings which both contain exactly the same number of characters with the same character
+frequency, the bit vector will be all 0s at the end of the two traversals. This is because
+for two strings that are permutations, each bit will be flipped an even number of
+times in total.
+"""
+
+Approach One:
+
+If two strings are permutations they have the same number of characters >> So the length of the two strings should be the same.
+So we can write a base case to compare their length.
+
+Also, if two strings are permutations they are characters but in different order. So if we sort the two arrays and compare them 
+that should provide an answer.
+
+def str_permutation(s1,s2):
+  _s2=sorted(s2)
+  _s1=sorted(s1)
+  
+  if s1== s2:
+   return True
+  return False
+  
+  In order to join the sorted array:
+  ''.join(sorted(a))
+  
+  
+Approach Two:
+  
+Time complexity: O(N) where N is the length of the linearly traversed strings.
+Space complexity: O(1) because bit vector does not scale with string length.
+If two strings are permutations of one another, the character counts of them should be equivalent:
+  
+  def str_permutation_new(s1,s2):
+      if len(s1) != len(s2):
+        return False
+      character_counts=128*[0]
+      for char in s1:
+        index=ord(s1)
+        character_counts[index] += 1
+      for char in s2:
+        index=ord(s2)
+        character_counts[index] -= 1
+          if character_counts[index] < 0 :
+            return False
+      return True
+  
+  
+  Intersting problems to consider after this:
+
+  How to generate all permutations of a list:
+  --------------------------------------------
+  We randomly select an element from the list and append to the rest of it:
+  
+  def permutations(lst):
+    l=[] #generate an empty list
+    if len(lst) == 0:
+      return []
+    if len(lst) == 1:
+      return [lst]
+    for i in range(len(lst)):
+    m=lst[i]
+    new_list=lst[:i]+lst[i+1:]
+    for p in permutations(new_list):
+      l.append([m]+p)
+    return l
+    
+  How to generate all permutations of a String:
+  ---------------------------------------------
+  
+  def to_string(list):
+  return ''.join(list)
+
+#a = string 
+#l = starting index of the string
+#r = ending index of the string
+
+def permute(a,l,r):
+  if l==r:
+    print (to_string(a))
+  else:
+    for i in range(l,r+1):
+      a[i],a[l]=a[l],a[i]
+      permute(a,l+1,r)
+      a[i],a[l]=a[l],a[i]
+  
+ # Time Complexity: O(n*n!) Note that there are n! permutations and it requires O(n) time to print a a permutation.
+  
+  
