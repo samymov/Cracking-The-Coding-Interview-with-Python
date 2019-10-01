@@ -1,0 +1,58 @@
+def zero_matrix(matrix):
+m,n= len(matrix), len(matrix[0])
+new_matrix = matrix
+for i in range(m):
+    for j in range(n):
+        if matrix[i][j] = 0
+          new_matrix[i][:] = 0
+          new_matrix[:][j] = 0
+     return new_matrix
+    
+    
+But this is a wrong approach since if we do this it would set the entire matrix to zero.
+Instead we should store the rows and cols that the value is 0.
+
+def zero_matrix(matrix):
+R,C=len(matrix),len(matrix[0])
+rowHasZero = False
+rowHasZero = False
+
+#check if first row has a zero
+for j in range len(matrix[0]):
+    if matrix[0][j] == 0:
+        rowHasZero = True
+        break
+#check if first col has a zero
+for j in range len(matrix):
+    if matrix[i][0] == 0:
+        colHasZero = True
+        break
+# check for zeros in the rest of the array and use first row and col to store this information
+for i in range len(matrix):
+    for j in range(len(matrix[0]):
+        if matrix[i][j] == 0:
+            matrix[i][0] = 0
+            matrix[0][j] = 0
+# look at storage and apply zeros to appropriate rows and columns
+for r in range(1,R):
+    if matrix[r][0] == 0:
+        nullifyRow(matrix,r)
+for c in range(1,C):
+    if matrix[0][c] == 0:
+        nullifyCol(matrix,c)
+        
+        
+def nullifyRow(matrix,r):
+    for j in range(C):
+        matrix[r][j] = 0
+        
+def nullifyCol(matrix,c):
+    for i in range(R):
+        matrix[i][c] = 0
+        
+# look at first row and first col to zero out first row and col
+
+    if rowHasZero:
+        matrix[0, :]= 0
+    if colHasZero:
+        matrix[:,0] = 0
