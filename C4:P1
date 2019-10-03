@@ -1,0 +1,36 @@
+"""
+Chapter 04 - Problem 01 - Path Between Nodes
+Problem Statement:
+Given a directed graph, design an algorithm to find out whether there is a
+route between two nodes.
+Solution:
+Use breadth first search (BFS) or depth first search (DFS) from node 1 to node 2.
+If node 2 is found return true. If node 2 is not found, return false. This solution
+implements BFS.
+Time complexity: O(N) . ?? $ check this cause we are using defaultdict so this should hopefully reduce the time complexity
+Space complexity: O(N) 
+"""
+
+
+from collections import defaultdict
+
+def __init__(self,vertices):
+    self.ver=vertices
+    self.graph= defaultdict(list)
+ 
+def addEdge(self,u,v):
+    self.graph[u].append(v)
+def isReacheable(self,s,d):
+    visited=[False]*(self.ver)
+    queue=[]
+    queue.append(s)
+    visited[s]= True
+    while queue:
+        n= queue.pop(0)
+        if n == d:
+          return True
+        for i in self.graph[n]:
+           if visited[i]== False:
+              queue.append(i)
+              visited[i]= True
+        return False
