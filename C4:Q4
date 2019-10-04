@@ -1,0 +1,53 @@
+  
+"""
+Chapter 04 - Problem 03 - List of Depths
+Problem Statement:
+Given a binary tree, design an algorithm which creates a linked list
+of all the nodes at each depth (e.g., if you have a tree with
+depth D, you'll have D linked lists).
+Solution:
+Represent the data structure described by the problem as a list of
+linked lists. Traverse the BST using recursive depth first search keeping
+track of the depth at each recursion. For each node traversed in each
+recursive call, determine the index of the vector from the depth, then
+add a singly linked node to the end of the linked list at that list index.
+To keep track of the linked list tails for fast additions, both the
+first and last elements of each linked list are tracked.
+Time complexity: O(N)
+Space complexity: O(N)
+"""
+Class LinkedList:
+    def __init__(self,val):
+        self.val=val
+        self.next=None
+Class Node:
+
+    def__init__(self,val,right,left):
+        self.val=val
+        self.right=None
+        self.left=None
+        
+    def depth(root):
+        if root is None:
+            return 0
+        if root.left and root.right is None:
+            return 1
+        else:
+           left_depth=depth(root.left)+1
+           right_depth=depth(root.right)+1
+        return max(left_depth,right_depth)
+         
+    def Tree_to_linked_lists(tree,lists={},d=None):
+        if d is None:
+            d=depth(tree)
+        if lists.get(d) is None:
+           lists[d]= LinkedList(tree.val)
+        else: 
+           lists[d].add(tree.val)
+           if d == 1:
+              return lists
+           if tree.left != None:
+              lists = Tree_to_linked_lists(tree.left,lists={},d=None)
+           if tree.right != None:
+              lists = Tree_to_linked_lists(tree.right,lists={},d=None)
+        return lists
