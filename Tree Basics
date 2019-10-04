@@ -1,0 +1,63 @@
+
+#general graph node
+
+class Node:
+
+    def __init__(self,val):
+        self.val=val
+        self.children=[]
+        
+    def DFS(self,node,visited):
+        if node in visited:
+            return
+        visited[node]=True
+        for c in node.children:
+            DFS(c,visited)
+            
+   def BFS(self,node,visited):
+        print(node.val)
+        visited[node]=True
+        q=node.children
+        while q:
+          c=q.pop(0)
+          if c in visited:
+              continue
+          visited[c]=True
+          print(c.val)
+          q+=c.children
+          
+ #using defaultdict
+ 
+ from collections import defaultdict
+ class Graph:
+    def__init__(self):
+        self.graph=defaultdict(list)
+    def addEdge(self,u,v):
+       self.graph[u].append(v)
+    def DFSUtil(self,v,visited):
+       print(v)
+       visited[v]=True
+       for i in self.graph:
+          if visited[i] == False:
+             self.DFSUtit(i,visited)
+    def DFS(self,v):
+       visited=[False]*len(self.graph)
+       self.DFSUtil(self,v,visited)
+       
+  class Graph:
+      def__init__(self):
+          self.graph= defaultdict(list)
+      def addEdge(self,u,v):
+          self.graph[u].append(v)
+      def BFS(self,v):
+          visited=[False]*len(self.graph)
+          queue=[]
+          queue.append(v)
+          visited[v]= True
+          while queue:
+              s=q.pop(0)
+              print(s)
+              for i in self.graph[s]:
+                  if visited[i]== False:
+                      queue.append(i)
+                      visited[i]=True
