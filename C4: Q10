@@ -1,0 +1,38 @@
+"""
+Chapter 04 - Problem 10 - Check Subtree
+Problem Statement:
+T1 and T2 are two very large binary trees, with T1 much bigger than T2.
+Create an algorithm to determine if T2 is a subtree of T1. A tree T2 is a subtree of T1
+if there exists a node n in T1 such that the subtree of n is identical to T2. That is,
+if you cut off the tree at node n, the two trees would be identical.
+Solution:
+Traverse T1 recursively in the main function. If during the recursive traversal a node with the same
+value as the head of T2 is found in T1, use a helper function to traverse T2 from its head and T1 from
+simultaneously to check that every node in each subtree has the same value. If this helper function
+returns True, the main function will return True. If the main function reaches the end of T1 without
+the helper function having returned True, the main function will return false.
+Time complexity: O(N + KM) where K is the number of times the head of T2 appears in T1.
+Space complexity: O(log(N) + log(M)) assuming trees are balanced
+"""
+Class Tree:
+  def__init__(self,val):
+      self.val = val
+      self.left = None
+      self.right = None
+      self.children = None
+      
+ def is_subtree(T1,T2):
+     if T2 is None and T1 is None:
+        return True
+     if T1 is None or T2 is None:
+        return False
+     if self.are_identical(T1,T2)
+        return True
+     return self.is_subtree(T1, T2.left) and self.is_subtree(T1, T2.right)
+
+ def are_identical(T1,T2):
+     if T2 is None and T1is None:
+        return True
+      if T1 or T2 is None:
+        return False
+      return ((T1.val == T2.val) and are_identical(T1.left,T2.left) and are_identical(T1.right,T2.right))
