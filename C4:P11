@@ -71,11 +71,17 @@ def getRand(self, randint=0):
         self.right.getRand(randint-self.left.children() - 1)
 
 def find (self,d):
-    if d == data:
-        return data
-    else if d < data: 
+    if d == self.val:
+        return self.val
+    else if d < self.val: 
         return left.find(d) if left is not None else None
-    else if d > data:
+    else if d > self.val:
         return right.find(d) if right is not None else None
         
-    
+ def delete(self,d):
+     if d == self.val:
+        del self.val
+    else if d < self.val: 
+        left.del(d) if left is not None else None
+    else if d > self.val:
+        right.del(d) if right is not None else None
