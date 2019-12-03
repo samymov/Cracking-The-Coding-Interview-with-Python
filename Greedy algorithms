@@ -1,0 +1,13 @@
+Used for optimization problems to maximize or minimize something.
+
+There are multiple solutions available.
+The "feasible solutions" are the ones that satisfy the constraints.
+But there is only one optimal solution.
+
+Strategies for optimization problems:
+1. Greedy Approach
+2. Dynamic Programming
+3. Branch and Bond
+
+
+
