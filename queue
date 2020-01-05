@@ -1,0 +1,17 @@
+from collections import queue
+  .put
+  .get
+  .qsize
+  .full
+  .empty
+  
+from collections import deque
+q= deque()
+q.append(x)
+q.popleft()
+
+
+#without library
+queue = []
+queue.append(x)
+queue.pop(0)
